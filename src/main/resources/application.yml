@@ -1,5 +1,12 @@
+server.port: ${PORT:9401}
 spring:
-  mvc:
-    static-path-pattern: /**
-
-server.port: 8081
+  application:
+    name: discovery-service
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
